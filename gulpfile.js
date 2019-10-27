@@ -5,7 +5,7 @@ var gulp = require('gulp'),                 // Gulp
     del = require('del'),                   // Для удаления директорий и файлов
     concat = require('gulp-concat'),        // Для склеивания файлов (конкатенация)
     uglify = require('gulp-uglify'),        // Для сжатия js
-    cssnano = require('gulp-cssnano'),      // Для минификации CSS
+    cleanCSS = require('gulp-clean-css'),   // Для минификации CSS
     remane = require('gulp-rename'),        // Для переименования файлов
     replace = require('gulp-replace');      // Для замены содержимого внутри файлов
 
@@ -73,7 +73,7 @@ gulp.task('css', function () {
         .pipe(less({
             paths: [path.join('app/less/', 'less', 'includes')]
         }))
-        .pipe(cssnano())
+        .pipe(cleanCSS())
         .pipe(remane({ suffix: '.min' }))
         .pipe(gulp.dest('dist/css'));
 });
