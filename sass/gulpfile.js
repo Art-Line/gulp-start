@@ -1,6 +1,6 @@
 var gulp = require('gulp'),                                 // Gulp
     browserSync = require('browser-sync'),                  // Browser Sync
-    sass = require('gulp-sass'),                            // Для компиляции less
+    sass = require('gulp-sass'),                            // Для компиляции sass
     del = require('del'),                                   // Для удаления директорий и файлов
     concat = require('gulp-concat'),                        // Для склеивания файлов (конкатенация)
     uglify = require('gulp-uglify'),                        // Для сжатия js
@@ -102,9 +102,6 @@ gulp.task('build-dist', function (done) {
 
     var buildFonts = gulp.src('app/fonts/*')
         .pipe(gulp.dest('dist/fonts'));
-
-    var buildJquery = gulp.src('app/js/jquery/*')
-        .pipe(gulp.dest('dist/js'));
 
     var buildFiles = gulp.src('app/*.+(xml|txt)')
         .pipe(gulp.dest('dist'));
