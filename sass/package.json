@@ -1,5 +1,5 @@
 {
-  "name": "simplepage",
+  "name": "name",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://Art_Line@bitbucket.org/Art_Line/simplepage.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/Art_Line/simplepage#readme",
+  "homepage": "",
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
@@ -20,6 +20,7 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
