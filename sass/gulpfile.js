@@ -70,7 +70,7 @@ gulp.task('js-prod', function () {
         .pipe(gulp.dest('dist/js'));
 });
 
-// Собираем style.sass и все его @import, сжимаем, переименовываем, выливаем в папку dist
+// Собираем style.sass и все его @import, объединяем все @media, сжимаем, переименовываем, выливаем в папку dist
 gulp.task('css', function () {
     return gulp.src('app/sass/**/*.+(scss|sass)')
         .pipe(sass({
@@ -92,7 +92,7 @@ gulp.task('html', function () {
         .pipe(gulp.dest('dist'));
 });
 
-// Переносим на продакшн (dist): svg, img, fonts, jquery
+// Переносим на продакшн (dist): svg, img, fonts, xml (example, sitemap.xml), txt (example, robots.txt)
 gulp.task('build-dist', function (done) {
     var buildSvg = gulp.src('app/svg/**/*.svg')
         .pipe(gulp.dest('dist/svg'));
@@ -105,6 +105,7 @@ gulp.task('build-dist', function (done) {
 
     var buildFiles = gulp.src('app/*.+(xml|txt)')
         .pipe(gulp.dest('dist'));
+
     done();
 });
 
