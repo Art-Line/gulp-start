@@ -51,6 +51,7 @@ gulp.task('sass', function () {
         }))
         .pipe(mediaQueries())
         .pipe(gulp.dest('app/css'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
 
@@ -111,7 +112,7 @@ gulp.task('build-dist', function (done) {
 
 // Наблюдаем  за sass и его импортами, script.js и js библиотеки, html
 gulp.task('watch', function () {
-    gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
+    gulp.watch('app/sass/**/*.+(scss|sass)', gulp.parallel('sass'));
     gulp.watch(['app/js/script.js', 'app/js/libs/*.js'], gulp.parallel('js', 'js-script'));
     gulp.watch('app/*.html', gulp.parallel('code'));
 });
