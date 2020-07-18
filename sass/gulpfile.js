@@ -9,7 +9,9 @@ var gulp = require('gulp'),                                 // Gulp
     replace = require('gulp-replace'),                      // Для замены содержимого внутри файлов
     normalize = require('node-normalize-scss'),             // подключаем normalize.sass
     mediaQueries = require('gulp-group-css-media-queries'), // для склейки @media
-    htmlMin = require('gulp-htmlmin');                      // для минификации html
+    htmlMin = require('gulp-htmlmin'),                      // для минификации html
+    postcss = require("gulp-postcss"),
+    autoprefixer = require("autoprefixer");
 
 //// Для разработки (app)
 
@@ -50,6 +52,9 @@ gulp.task('sass', function () {
             includePaths: normalize.includePaths
         }))
         .pipe(mediaQueries())
+        .pipe(postcss([
+            autoprefixer()
+        ]))
         .pipe(gulp.dest('app/css'))
         .pipe(browserSync.reload({ stream: true }));
 });
@@ -78,6 +83,9 @@ gulp.task('css', function () {
             includePaths: require('node-normalize-scss').includePaths
         }))
         .pipe(mediaQueries())
+        .pipe(postcss([
+            autoprefixer()
+        ]))
         .pipe(cleanCSS())
         .pipe(remane({ suffix: '.min' }))
         .pipe(gulp.dest('dist/css'));
