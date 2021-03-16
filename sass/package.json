@@ -2,16 +2,14 @@
   "name": "name",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "",
-  "license": "ISC",
+  "browserslist": [
+    "last 2 versions",
+    "IE 11",
+    "Firefox ESR"
+  ],
   "homepage": "",
   "devDependencies": {
     "browser-sync": "^2.26.10",
@@ -25,11 +23,12 @@
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
-    "node-normalize-scss": "^8.1.2",
     "node-sass": "^4.14.1"
   },
   "dependencies": {
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-postcss": "^8.0.0"
+    "autoprefixer": "^10.2.5",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.2.8"
   }
 }

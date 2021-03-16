@@ -1,13 +1,13 @@
 var gulp = require('gulp'),                                 // Gulp
     browserSync = require('browser-sync'),                  // Browser Sync
     sass = require('gulp-sass'),                            // Для компиляции sass
+    sourcemap = require("gulp-sourcemaps"),                 // map sass
     del = require('del'),                                   // Для удаления директорий и файлов
     concat = require('gulp-concat'),                        // Для склеивания файлов (конкатенация)
     uglify = require('gulp-uglify'),                        // Для сжатия js
     cleanCSS = require('gulp-clean-css'),                   // Для минификации CSS
     remane = require('gulp-rename'),                        // Для переименования файлов
     replace = require('gulp-replace'),                      // Для замены содержимого внутри файлов
-    normalize = require('node-normalize-scss'),             // подключаем normalize.sass
     mediaQueries = require('gulp-group-css-media-queries'), // для склейки @media
     htmlMin = require('gulp-htmlmin'),                      // для минификации html
     postcss = require("gulp-postcss"),
@@ -48,13 +48,12 @@ gulp.task('js', function () {
 // Следим за изменениями sass и всеми его @import + Перезапустить Browser Sync
 gulp.task('sass', function () {
     return gulp.src('app/sass/**/*.+(scss|sass)')
-        .pipe(sass({
-            includePaths: normalize.includePaths
-        }))
-        .pipe(mediaQueries())
+        .pipe(sourcemap.init())
+        .pipe(sass())
         .pipe(postcss([
             autoprefixer()
         ]))
+        .pipe(sourcemap.write("."))
         .pipe(gulp.dest('app/css'))
         .pipe(browserSync.reload({ stream: true }));
 });
@@ -79,9 +78,7 @@ gulp.task('js-prod', function () {
 // Собираем style.sass и все его @import, объединяем все @media, сжимаем, переименовываем, выливаем в папку dist
 gulp.task('css', function () {
     return gulp.src('app/sass/**/*.+(scss|sass)')
-        .pipe(sass({
-            includePaths: require('node-normalize-scss').includePaths
-        }))
+        .pipe(sass())
         .pipe(mediaQueries())
         .pipe(postcss([
             autoprefixer()
