@@ -1,32 +1,39 @@
 {
-  "name": "name",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "IE 11",
-    "Firefox ESR"
-  ],
-  "homepage": "",
-  "devDependencies": {
-    "browser-sync": "^2.26.10",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.1.0",
-    "node-sass": "^4.14.1"
-  },
-  "dependencies": {
-    "autoprefixer": "^10.2.5",
-    "gulp-postcss": "^9.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "postcss": "^8.2.8"
-  }
+    "name": "name",
+    "version": "1.0.0",
+    "description": "",
+    "devDependencies": {
+        "browser-sync": "^2.26.10",
+        "del": "^5.1.0",
+        "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-group-css-media-queries": "^1.2.2",
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-rename": "^1.4.0",
+        "gulp-replace": "^1.0.0",
+        "gulp-sass": "^4.1.0",
+        "node-sass": "^4.14.1",
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^22.0.0"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.2.5",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-postcss": "^9.0.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "gulp-svgstore": "^7.0.1",
+        "postcss": "^8.2.8",
+    },
+    "scripts": {
+        "stylelint": "stylelint \"app/sass/**/*.scss\" --syntax scss",
+        "test": "npm run stylelint",
+        "build": "gulp build",
+        "start": "gulp"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "IE 11",
+        "Firefox ESR"
+    ]
 }
