@@ -1,7 +1,9 @@
 # Gulp 4 готовая сборка.
-css препроцессор less/scss
-нету ужатия графики и спрайтов.
+node version 19
 sass-lite - без js
+sass - c js
+sass-slick - c slick-slider and jquery
+
 
 ### Project setup
 ```

@@ -49,7 +49,7 @@ gulp.task('js-script', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src(['app/js/script.js'])
+    return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/slick-carousel/slick/slick.min.js', 'app/js/script.js'])
         .pipe(concat('all.js'))
         .pipe(babel({
             presets: ['@babel/env']
@@ -73,7 +73,7 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('js-prod', function () {
-    return gulp.src(['app/js/script.js'])
+    return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/slick-carousel/slick/slick.min.js', 'app/js/script.js'])
         .pipe(concat('all.min.js'))
         .pipe(babel({
             presets: ['@babel/env']
