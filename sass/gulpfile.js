@@ -15,7 +15,8 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     webp = require("gulp-webp"),
-    babel = require('gulp-babel');
+    babel = require('gulp-babel'),
+    cheerio = require('gulp-cheerio');
 
 gulp.task('browser-sync', function () {
     browserSync({
@@ -60,6 +61,12 @@ gulp.task('js', function () {
 
 gulp.task('svg-sprite', function () {
     return gulp.src("app/img/icons/*.svg")
+        .pipe(cheerio({
+            run: ($) => {
+                $('[fill]').removeAttr('fill');
+            },
+            parserOptions: { xmlMode: true }
+        }))
         .pipe(svgstore({
             inlineSvg: true
         }))
@@ -113,6 +120,12 @@ gulp.task('optimize-images', function () {
 
 gulp.task('svg-sprite-prod', function () {
     return gulp.src("app/img/icons/*.svg")
+        .pipe(cheerio({
+            run: ($) => {
+                $('[fill]').removeAttr('fill');
+            },
+            parserOptions: { xmlMode: true }
+        }))
         .pipe(svgstore({
             inlineSvg: true
         }))
